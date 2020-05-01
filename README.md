@@ -1,2 +1,0 @@
-# cp_ansible_automation_roles_collection
-cp_ansible_automation_roles_collection
