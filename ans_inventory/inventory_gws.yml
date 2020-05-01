@@ -1,0 +1,19 @@
+[GWs]
+# R80.30
+192.168.168.101 name="GWR8010" vs_name="" ip="192.168.168.101" domain="CMA1"
+# 192.168.168.101 name="GWR8010" vs_name="" ip="192.168.168.101" domain="CMA1" ansible_python_interpreter=/opt/CPsuite-R80.30/fw1/Python/bin/python
+
+
+[GWs:vars]
+ansible_connection=ssh
+ansible_user=robot
+#ansible_python_interpreter=/opt/CPsuite-R80.30/fw1/Python/bin/python
+ansible_python_interpreter=/opt/CPsuite-R80/fw1/Python/bin/python
+
+#For keys copy
+local_key_path=/home/automation/.ssh/
+local_key_name=id_rsa_robot.pub
+remote_key_path=/etc/ssh/auth/
+remote_key_fileName=authorized_keys
+
+

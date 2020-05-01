@@ -1,0 +1,20 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: no
+
+    vars:    
+      outputFolder: ../output
+      outputFile: reachabilityCheck_
+      inventoryCSVfile: ../vars/gatewaysList_20200331.csv     # Must exist 
+      inventoryJsonfile: ../vars/gatewaysList_20200331.json   # Will be created from csv file
+
+      # ToDo:
+      # Implement a flag for: convertCsvToJson
+      # Use this flag to activate/deactivate the task converting csv to json
+
+    roles:
+      # Implemented roles
+      - roles/gateways/gws_reachability_check/
+
+

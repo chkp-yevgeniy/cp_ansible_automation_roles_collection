@@ -1,0 +1,10 @@
+---
+  - hosts: "GWs"
+    gather_facts: no
+  
+    roles:      
+      - roles/gateways/deploy_techuser
+
+
+      
+      

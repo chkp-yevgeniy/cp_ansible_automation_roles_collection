@@ -1,0 +1,11 @@
+---
+  - hosts: "GWs"
+    gather_facts: no
+    #serial: 1
+
+    roles:
+      - roles/gateways/excecute_shell_commands
+
+
+      
+      

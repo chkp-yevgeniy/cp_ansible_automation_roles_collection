@@ -1,0 +1,9 @@
+---
+# Add or delete network group in Check Point management server
+- name: Configure network group
+  cp_mgmt_group:
+    state: "{{item.state}}"
+    name: "{{item.name}}"
+    comments: "{{item.comments}}"
+  loop: "{{ vars[ansible_checkpoint_domain~'-cp_mgmt_group_tasks'] }}"
+  ignore_errors: yes

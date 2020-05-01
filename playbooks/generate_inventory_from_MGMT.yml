@@ -1,0 +1,13 @@
+---
+  - hosts: "MGMT"
+    gather_facts: no
+      
+    roles:      
+      # In this role, the gateway are accessed from Ansible via ssh
+      - roles/mgmt/generate_inventory_from_mgmt
+
+
+      
+      
+      
+      

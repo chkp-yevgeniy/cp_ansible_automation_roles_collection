@@ -1,0 +1,127 @@
+---  
+  - name: "Current ansible_checkpoint_domain"
+    debug: msg="{{ ansible_checkpoint_domain }}"
+ 
+  - include_tasks: cp_mgmt_group.yml
+  - include_tasks: cp_mgmt_network.yml
+  - include_tasks: cp_mgmt_host.yml
+  - include_tasks: cp_mgmt_service_udp.yml
+  - include_tasks: cp_mgmt_package.yml
+  - include_tasks: cp_mgmt_access_rule.yml
+  # Do not forget to publish.
+  - include_tasks: cp_mgmt_publish.yml
+
+
+##### Below are all tasks in one file
+#  - name: Configure network group
+#    cp_mgmt_group:
+#      state: "{{item.state}}"
+#      name: "{{item.name}}"
+#    loop: "{{ vars[ansible_checkpoint_domain~'-cp_mgmt_group_tasks'] }}"
+#
+#
+#  - name: Configure networks
+#    cp_mgmt_network:
+#      state: "{{item.state}}"
+#      color: "{{item.color}}"
+#      #groups: "{{item.groups}}"
+#      name: "{{item.name}}"
+#      subnet: "{{ item.subnet | ipaddr('network') }}"
+#      subnet_mask: "{{ item.subnet | ipaddr('netmask') }}"
+#      #auto_publish_session: true      
+#    loop: "{{ vars[ansible_checkpoint_domain~'-cp_mgmt_network_tasks'] }}"
+#
+#    
+#  - name: Configure hosts
+#    cp_mgmt_host:
+#      state: "{{item.state}}"
+#      color: "{{item.color}}"
+#      name: "{{item.name}}"
+#      ip_address: "{{item.ip}}"
+#      nat_settings:
+#        auto_rule: "{{item.nat_auto_rule}}"
+#        install_on: "{{item.nat_install_on}}"
+#        ipv4_address: "{{item.nat_ipv4}}"
+#        method: "{{item.nat_method}}"
+#        #auto_publish_session: true      
+#    loop: "{{ vars[ansible_checkpoint_domain~'-cp_mgmt_host_tasks'] }}"
+#
+# 
+#  - name: Configure service udp
+#    cp_mgmt_service_udp:
+#      state: "{{item.state}}"      
+#      accept_replies: "{{item.acceptReplies}}"
+#      aggressive_aging:        
+#        default_timeout: "{{item.defaultTimeout}}"
+#      color: "{{item.color}}"
+#      name: "{{item.name}}"
+#      port: "{{item.port}}"     
+#    loop: "{{ vars[ansible_checkpoint_domain~'-cp_mgmt_service_udp'] }}"
+#  
+#  
+#  # Task to add, set or deletea gateway object in Check Point management server
+#  - name: Add, set or delete simple-gateway
+#    cp_mgmt_simple_gateway:
+#      state: "{{item.state}}"
+#      name: "{{item.name}}"
+#      anti_bot: "{{item.anti_bot}}"
+#      anti_virus: "{{item.anti_virus}}"
+#      application_control: "{{item.appi_ctrl}}"
+#      color: "{{item.color}}"
+#      firewall: "{{item.firewall}}"
+#      ips: "{{item.ips}}"
+#      ipv4_address: "{{item.eth0_ipv4}}" 
+#      one_time_password: "{{item.sickey}}"
+#      threat_emulation: "{{item.threat_emulation}}"
+#      url_filtering: "{{item.url_filtering}}"
+#      #version: "{{item.gw_version}}" # curently broken 
+#      interfaces:
+#      - name: eth0
+#        anti_spoofing: "{{item.eth0_anti_spoofing}}"
+#        ipv4_address: "{{item.eth0_ipv4}}" 
+#        ipv4_network_mask: "{{item.eth0_ipv4_network_mask}}"
+#        topology: "{{item.eth0_topology}}"
+#      - name: eth1
+#        anti_spoofing: "{{item.eth1_anti_spoofing}}"
+#        ipv4_address: "{{item.eth1_ipv4}}" 
+#        ipv4_network_mask: "{{item.eth1_ipv4_network_mask}}"
+#        topology: "{{item.eth0_topology}}"
+#        topology_settings:
+#          ip_address_behind_this_interface: "{{item.eth1_topology_ip_behind_if}}"    
+#    loop: "{{ vars[ansible_checkpoint_domain~'-cp_mgmt_simple_gateway_tasks'] }}"
+#
+#
+#
+#  - name: Configure policy package
+#    cp_mgmt_package:
+#      state: "{{item.state}}"
+#      access: "{{item.access}}"
+#      color: "{{item.color}}"
+#      comments: "{{item.comments}}"
+#      name: "{{item.name}}"
+#      threat_prevention: "{{item.threat_prevention}}"
+#    loop: "{{ vars[ansible_checkpoint_domain~'-cp_mgmt_package_tasks'] }}"
+#
+#   
+#  - name: Configure access-rule
+#    cp_mgmt_access_rule:
+#      state: "{{item.state}}"
+#      layer: "{{item.layer}}"
+#      name: "{{item.name}}"
+#      position: "{{item.position}}"
+#      source: "{{item.source}}"
+#      destination: "{{item.destination}}"
+#      service: "{{item.service}}"
+#      action: "{{item.action}}"
+#      track:
+#        type: "{{item.track_type}}"    
+#    loop: "{{ vars[ansible_checkpoint_domain~'-cp_mgmt_access_rule_tasks'] }}"
+#  
+#
+#    
+#  - name: Publish
+#    cp_mgmt_publish:
+#    register: publish_response
+#    
+#
+#

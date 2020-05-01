@@ -1,0 +1,21 @@
+[MGMT]
+10.17.73.30
+
+[MGMT:vars]
+ansible_connection=ssh
+ansible_user=robot
+ansible_group=root
+#ansible_ssh_pass= # not required since we use public key authentication
+ansible_python_interpreter=/bin/python
+
+invScriptFolderLocal="../scripts/" 
+invScriptFile="gwInventoryFromMGMTGenerator.sh"
+
+# Folders on the MGMT
+invScriptFolderRemote="/home/automation/scripts/ansible_scripts/"
+invScriptLogsFolderRemote="/var/log/data/inventory_ansible/reports_" 
+
+invScriptLogsFile="inventory_logs.txt"
+invScriptReportFile="gwsInventoryFromMGMT_" 
+invLocalFolder="../output/"
+

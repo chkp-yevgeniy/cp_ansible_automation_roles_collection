@@ -1,0 +1,55 @@
+---
+  - name: "Command name"
+    debug: msg={{ parametersArr.name }}
+  
+  # - name: "Command"
+  #   debug: msg={{ parametersArr.command }}
+  
+  #- meta: end_play
+
+  - name: "Write command separator"
+    shell: echo "---------------{{ parametersArr.name }}----------------" >> {{ outputFileName }}    
+    delegate_to: localhost    
+
+  # Block for commands execution
+  - name: Execute command  
+    block:
+      - name: Execute command
+        shell: "{{ parametersArr.command }}"  
+        register: commandOutput
+        ignore_errors: yes        
+      # - name: "Command output"
+      #   debug: msg={{ commandOutput.stdout }}
+      - name: "Write data to the report"
+        shell: echo "{{ commandOutput.stdout }}" >> {{ outputFileName }}
+        delegate_to: localhost  
+    when: 
+      - parametersArr.action=="cmd"      
+
+  # Block for files copy 
+  - name: Copy file  
+    block:
+      - name: "From copy file"
+        debug: msg="From copy file"
+      # Fetch file to 
+      - name: "Fetch file"
+        fetch:
+          src: "{{ parametersArr.fileName }}"
+          #dest: "/tmp/{{ parametersArr.fileName }}{{ name }}"
+          dest: "/tmp/ans_copy_file/"
+      # Write file into outputFile
+      - name: "Write data to the report"
+        shell: cat "/tmp/ans_copy_file/{{ ip }}/{{ parametersArr.fileName }}" >> {{ outputFileName }}
+        delegate_to: localhost  
+      # Delete temp file
+      - name: "Delete temp file"
+        file: 
+          path: "/tmp/ans_copy_file/{{ ip }}"
+          state: absent
+        delegate_to: localhost  
+    when: 
+      - parametersArr.action=="copyFile" 
+    ignore_errors: yes       
+
+    
+

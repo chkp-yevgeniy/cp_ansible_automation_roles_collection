@@ -1,0 +1,42 @@
+---
+  ###########################################
+  - name: Get current time
+    shell: date +%Y%m%d_%H%M%S
+    register: curTime
+    run_once: true
+    delegate_to: localhost
+
+  - name: Include commands list
+    include_vars:
+      file: ../vars/shellCommandsList.yml
+
+  - name: Set facts 
+    set_fact:
+      outputFileName: ../output/vpnGwsData_{{ curTime.stdout }}_{{ name }}.txt      
+
+  - name: "Current host"
+    debug: msg={{ name }}
+
+  - name: "outputFileName"
+    debug: msg={{ outputFileName }}
+
+  - name: Write gateway name into log
+    shell: echo "******************  {{ name }}  *************************">> {{ outputFileName }}
+    delegate_to: localhost    
+
+
+  # Iterate via shell commands. Excecute them in the body.   
+  - include_tasks: includedTasks.yml
+    vars:
+      parametersArr: "{{item}}" 
+    with_items:      
+      - "{{ shellCommands }}"
+
+  # - meta: end_play
+    
+  
+
+
+
+
+  

@@ -1,0 +1,29 @@
+[MGMT]
+# Inventory and Playbook are prepared for an MDS
+# These are your CMAs (Domains)
+CMA1_CMA ansible_checkpoint_domain=CMA1
+
+# !!! Note:
+# Adjust /etc/hosts (make names set above resolvable)
+# E.g.:
+# If you are on MDS having IP 192.168.168.10,
+# then following is to be configured in /etc/hosts:
+
+#192.168.168.30  CMA1CMA
+
+# !!! Note: 
+# If you have HA MDS setup, 
+# the IP of currenly active MDS for certain CMA has to be put in /etc/hosts
+
+
+[MGMT:vars]
+ansible_httpapi_use_ssl=True
+ansible_httpapi_validate_certs=False
+ansible_network_os=check_point.mgmt.checkpoint
+# Your smart console account:
+ansible_user=...
+ansible_ssh_pass=...
+#ansible_password=
+
+
+

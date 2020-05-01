@@ -1,0 +1,130 @@
+---
+  ###########################################
+  # Print, prepare vars
+  
+  - name: Get hostname
+    shell: hostname
+    register: hostnameRemoteHost
+
+  - name: Print hostnameRemoteHost 
+    debug: msg={{ hostnameRemoteHost.stdout }}    
+
+  - name: Print invScriptFolderLocal
+    debug: msg={{ invScriptFolderLocal }}
+  
+  - name: Print invScriptFile location
+    debug: msg={{ invScriptFile }}
+
+  - name: Print invScriptFolderRemote location
+    debug: msg={{ invScriptFolderRemote }}  
+
+  - name: Get unix time
+    shell: date +%s
+    delegate_to: localhost  
+    register: curUnixTime
+
+  - name: Prepare the invScriptLogsFolderRemoteForSession  
+    debug: msg={{ invScriptLogsFolderRemote }}{{ curUnixTime.stdout }}/
+    register: invScriptLogsFolderRemoteForSession
+
+  - name: Print playbook_dir
+    debug: msg={{ playbook_dir }}  
+
+
+  # ----- Prepare report file name
+
+  - name: Get current time
+    shell: date +%Y%m%d_%H%M%S
+    register: curTime
+
+  - name: Print current time
+    debug: msg={{ curTime.stdout }}    
+
+  - name: Create report file name
+    shell: echo "{{ invLocalFolder }}/{{ invScriptReportFile }}{{ curTime.stdout }}.csv"
+    register: reportFileFullName
+
+  - name: Print reportFileFullName
+    debug: msg={{ reportFileFullName.stdout }}  
+  
+
+#  - meta: end_play
+
+ ###########################################
+  # Create remote folders
+  
+  - name: Create remote ansible script folder
+    shell: mkdir -p "{{ invScriptFolderRemote }}"
+
+  - name: Create remote ansible log folder
+    shell: mkdir -p "{{ invScriptLogsFolderRemoteForSession.msg }}"  
+
+  #- meta: end_play
+    
+  
+  ###########################################
+  # Copy and execute inventory script
+  
+  - name: Delete inventory file script
+    file:
+      state: absent
+      path: "{{ invScriptFolderRemote }}{{ invScriptFile }}"      
+  
+  - name: Copy inventory script to Mgmt
+    copy:
+      src: "{{playbook_dir}}/{{ invScriptFolderLocal }}{{ invScriptFile }}"
+      dest: "{{ invScriptFolderRemote }}{{ invScriptFile }}"
+      owner: "{{ ansible_user }}" 
+      group: "{{ ansible_group }}"
+      mode: '0744'      
+
+
+  - name: Print inventory script with arguments
+    ## execute script with following three arguments: logsReportFolder logFile reportsFile
+    #debug: msg="{{ invScriptFolderRemote }}{{ invScriptFile }} 2>/dev/null {{ invScriptLogsFolderRemoteForSession.msg }} {{ invScriptLogsFile }} {{ invScriptReportFile }}"      
+    debug: msg="{{ invScriptFolderRemote }}{{ invScriptFile }} 2>/dev/null {{ invScriptLogsFolderRemoteForSession.msg }} {{ invScriptLogsFile }} {{ invScriptReportFile }}"      
+
+
+  - name: Execute the inventory script
+    ## execute script with following three arguments: logsReportFolder logFile reportsFile
+    shell: "{{ invScriptFolderRemote }}{{ invScriptFile }} 2>/dev/null {{ invScriptLogsFolderRemoteForSession.msg }} {{ invScriptLogsFile }} {{ invScriptReportFile }}"  
+
+
+  #- meta: end_play
+
+  ###########################################
+  # ToDo: Create an archive copy of existing gatewaysInventoryFile
+  
+  
+  # Copy remote files to ansible controller
+  - name: Copy remote report to local
+    fetch:
+      src: "{{ invScriptLogsFolderRemoteForSession.msg }}{{ invScriptReportFile }}"
+      #dest: "{{ invScriptLogsFolderLocalForSession.msg }}{{ invScriptReportsFile }}{{ hostnameRemoteHost.stdout }}_tmp"      
+      #dest: "{{playbook_dir}}/{{ invLocalFolder }}{{ invScriptReportFile }}"
+      dest: "{{playbook_dir}}/{{ invLocalFolder }}{{ reportFileFullName.stdout }}"
+      flat: yes
+    ignore_errors: yes
+
+
+  - meta: end_play
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
