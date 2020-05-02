@@ -1,9 +1,11 @@
 [MGMT]
-10.17.73.30
+10.142.0.20
 
 [MGMT:vars]
 ansible_connection=ssh
 ansible_user=robot
+#ansible_ssh_pass=vpn123
+#ansible_user=vpn
 ansible_group=root
 #ansible_ssh_pass= # not required since we use public key authentication
 ansible_python_interpreter=/bin/python
