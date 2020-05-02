@@ -1,7 +1,7 @@
 ---
 # Add or delete network group in Check Point management server
 - name: Configure network group
-  cp_mgmt_group:
+  cp_mgmt_group:  
     state: "{{item.state}}"
     name: "{{item.name}}"
     comments: "{{item.comments}}"

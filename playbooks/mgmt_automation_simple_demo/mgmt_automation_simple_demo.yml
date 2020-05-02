@@ -13,9 +13,12 @@
 
     - name: task to have network
       check_point.mgmt.cp_mgmt_network:
+      #cp_mgmt_network:
         name: "net_4.1.80.0_m24"
         subnet: "4.1.80.0"
-        mask_length: 24  
+        mask_length: 24 
+        #state: absent 
+        state: present
         comments: "Test network created from Ansible via WEB API"
         auto_publish_session: true
  

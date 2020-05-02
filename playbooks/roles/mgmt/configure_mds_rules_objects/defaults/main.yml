@@ -3,16 +3,16 @@
 #################################################################
 #################################################################
 #################################################################
-### Configuration for the CMA: WIFI
+### Configuration for the CMA/Domain: MGMT
 
 # Network groups
-WIFI-cp_mgmt_group_tasks:
+MGMT-cp_mgmt_group_tasks:
 - { state: present, name: TestGroupAutomation, comments: "Test group created from Ansible via WEB API"}
 #- { state: present, name: 'ACME_ext_nets'}
 # - { state: present, name: 'ACME_Security_Gateways'}
 
 # Networks
-WIFI-cp_mgmt_network_tasks:
+MGMT-cp_mgmt_network_tasks:
 - { state: present, name: 'net_10.123.123.0_m24', subnet: 10.123.123.0/24, groups: ["TestGroupAutomation"], color: blue, comments: "Test network created from Ansible via WEB API"}
 - { state: present, name: 'net_10.123.124.0_m24', subnet: 10.123.124.0/24, groups: ["TestGroupAutomation"], color: blue, comments: "Test network created from Ansible via WEB API"}
 - { state: present, name: 'net_10.123.125.0_m24', subnet: 10.123.125.0/24, groups: ["TestGroupAutomation"], color: blue, comments: "Test network created from Ansible via WEB API"}
@@ -27,7 +27,7 @@ WIFI-cp_mgmt_network_tasks:
 
 
 # Hosts
-WIFI-cp_mgmt_host_tasks:
+MGMT-cp_mgmt_host_tasks:
 - { state: present, name: test_host_automation, ip: 123.123.1.1, color: red, 
     nat_auto_rule: false, nat_method: static, nat_ipv4: , nat_install_on: All,
     comments: "Test host created from Ansible via WEB API"
@@ -39,7 +39,7 @@ WIFI-cp_mgmt_host_tasks:
 
 
 # UDP services
-WIFI-cp_mgmt_service_udp:
+MGMT-cp_mgmt_service_udp:
 - { state: present, name: 'udp_11111', port: 11111, acceptReplies: true, defaultTimeout: 3600, color: orange, comments: "Test service created from Ansible via WEB API"}
 - { state: present, name: 'udp_10123', port: 10123, acceptReplies: true, defaultTimeout: 3600, color: orange, comments: "Test service created from Ansible via WEB API"}
 - { state: present, name: 'udp_10124', port: 10124, acceptReplies: true, defaultTimeout: 3600, color: orange, comments: "Test service created from Ansible via WEB API"}
@@ -50,7 +50,7 @@ WIFI-cp_mgmt_service_udp:
 #- { state: present, name: ACMECorp Rules, layer: Orchestration_Demo_Policy Network, position: top}
 
 # Policy packages
-WIFI-cp_mgmt_package_tasks:
+MGMT-cp_mgmt_package_tasks:
 - { state: present, 
     name: Automation_Test_Policy, 
     comments: "Demo policy created from Ansible via WEB API", 
@@ -60,14 +60,15 @@ WIFI-cp_mgmt_package_tasks:
   }
 
 # # Rules
-WIFI-cp_mgmt_access_rule_tasks:
+MGMT-cp_mgmt_access_rule_tasks:
 - { state: present, layer: Automation_Test_Policy Network, name: First rule, 
     position: 1, source: ["test_host_automation", "test_host_automation2"], destination: any, service: ["ssh", "https"], action: accept, track_type: log 
+    #position: 1, source: ["test_host_automation"], destination: any, service: ["ssh", "https"], action: accept, track_type: log 
   }
 - { state: present,  layer: Automation_Test_Policy Network, name: Second rule, 
     position: 2, source: TestGroupAutomation, destination: any, service: ["udp_10123"], action: accept, track_type: log 
   }
-- { state: present, layer: Automation_Test_Policy Network, name: Third rule, 
+- { state: present, layer: Automation_Test_Policy Network, name: Third rule,     
     position: 3, source: any, destination: ["net_10.123.123.0_m24", "net_10.123.124.0_m24"], service: ["udp_10124"], action: accept, track_type: log 
     #position: 3, source: any, destination: any, service: ["udp_10124"], action: accept, track_type: log 
   }
@@ -88,7 +89,7 @@ WIFI-cp_mgmt_access_rule_tasks:
     position: 4, position_bottom: "default drop", source: any, destination: ["any"], service: ["any"], action: drop, track_type: log }
 
 # # Gateways
-# WIFI-cp_mgmt_simple_gateway_tasks:
+# MGMT-cp_mgmt_simple_gateway_tasks:
 # - { state: present, name: sg101, sickey: vpn123, gw_version: R80.20, 
 #     anti_bot: true, anti_virus: true, appi_ctrl: true, color: blue, firewall: true, ips: true, threat_emulation: false, url_filtering: true, 
 #     eth0_ipv4: 192.168.233.101, eth0_ipv4_network_mask: 255.255.255.0, eth0_anti_spoofing: true, eth0_topology: External, 

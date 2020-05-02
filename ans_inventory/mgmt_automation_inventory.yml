@@ -1,15 +1,19 @@
 [MGMT]
+
+10.142.0.20 ansible_checkpoint_domain=MGMT
+# If you have an MDS configure inventory in following way
 # Inventory and Playbook are prepared for an MDS
 # These are your CMAs (Domains)
-CMA1_CMA ansible_checkpoint_domain=CMA1
+#CMA1CMA ansible_checkpoint_domain=CMA1
+#CMA2CMA ansible_checkpoint_domain=CMA2
 
 # !!! Note:
 # Adjust /etc/hosts (make names set above resolvable)
 # E.g.:
 # If you are on MDS having IP 192.168.168.10,
 # then following is to be configured in /etc/hosts:
-
-#192.168.168.30  CMA1CMA
+#192.168.168.10  CMA1CMA
+#192.168.168.10  CMA2CMA
 
 # !!! Note: 
 # If you have HA MDS setup, 
@@ -19,11 +23,13 @@ CMA1_CMA ansible_checkpoint_domain=CMA1
 [MGMT:vars]
 ansible_httpapi_use_ssl=True
 ansible_httpapi_validate_certs=False
-ansible_network_os=check_point.mgmt.checkpoint
 # Your smart console account:
-ansible_user=...
-ansible_ssh_pass=...
+ansible_user=api_user
+ansible_ssh_pass=vpn123
 #ansible_password=
-
+# Check Point modules:
+ansible_network_os=checkpoint
+# If you will update CP modules from Ansible galaxy used following:
+#ansible_network_os=check_point.mgmt.checkpoint
 
 
