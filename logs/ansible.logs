@@ -1,0 +1,66 @@
+06-05-2020 11:05:42,055 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:11,290 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:50,480 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:25,649 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:08,999 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:04,223 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:13,079 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:37,740 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:53,416 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:05,053 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:40,699 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:48,479 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:49,396 ans_configureUsers INFO login OK to r80dot30gw1
+06-05-2020 11:05:08,401 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:09,295 ans_configureUsers INFO login OK to r80dot30gw1
+06-05-2020 11:05:11,301 ans_configureUsers INFO user added user81
+06-05-2020 11:05:13,267 ans_configureUsers INFO user set user81
+06-05-2020 11:05:15,339 ans_configureUsers INFO user added user11
+06-05-2020 11:05:17,587 ans_configureUsers INFO user set user11
+06-05-2020 11:05:20,277 ans_configureUsers INFO user added user80
+06-05-2020 11:05:22,578 ans_configureUsers INFO user set user80
+06-05-2020 11:05:25,069 ans_configureUsers INFO user added user12
+06-05-2020 11:05:27,612 ans_configureUsers INFO user set user12
+06-05-2020 11:05:27,849 ans_configureUsers INFO --- Finish Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:10,617 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:11,513 ans_configureUsers INFO login OK to r80dot30gw1
+06-05-2020 11:05:12,759 ans_configureUsers INFO user already exists user81
+06-05-2020 11:05:23,312 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 11:05:24,212 ans_configureUsers INFO login OK to r80dot30gw1
+06-05-2020 11:05:25,438 ans_configureUsers INFO user already exists user81
+06-05-2020 11:05:27,051 ans_configureUsers INFO user already exists user11
+06-05-2020 11:05:28,675 ans_configureUsers INFO user already exists user80
+06-05-2020 11:05:30,385 ans_configureUsers INFO user already exists user12
+06-05-2020 11:05:31,157 ans_configureUsers INFO --- Finish Ansible role to add and delete users on gateways ---
+06-05-2020 12:05:44,595 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 12:05:45,496 ans_configureUsers INFO login OK to r80dot30gw1
+06-05-2020 12:05:46,863 ans_configureUsers INFO user deleted user11
+06-05-2020 12:05:47,933 ans_configureUsers INFO user already exists user12
+06-05-2020 12:05:49,562 ans_configureUsers INFO user already exists user80
+06-05-2020 12:05:51,209 ans_configureUsers INFO user already exists user81
+06-05-2020 12:05:54,067 ans_configureUsers INFO user added user82
+06-05-2020 12:05:56,471 ans_configureUsers INFO user set user82
+06-05-2020 12:05:56,700 ans_configureUsers INFO --- Finish Ansible role to add and delete users on gateways ---
+06-05-2020 12:05:49,064 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 12:05:49,983 ans_configureUsers INFO login OK to r80dot30gw1
+06-05-2020 12:05:52,716 ans_configureUsers INFO user already exists user12
+06-05-2020 12:05:54,337 ans_configureUsers INFO user already exists user80
+06-05-2020 12:05:55,983 ans_configureUsers INFO user already exists user81
+06-05-2020 12:05:57,673 ans_configureUsers INFO user already exists user82
+06-05-2020 12:05:58,436 ans_configureUsers INFO --- Finish Ansible role to add and delete users on gateways ---
+06-05-2020 12:05:22,694 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 12:05:23,690 ans_configureUsers INFO login OK to r80dot30gw1
+06-05-2020 12:05:27,204 ans_configureUsers INFO user already exists user12
+06-05-2020 12:05:29,300 ans_configureUsers INFO user already exists user80
+06-05-2020 12:05:31,412 ans_configureUsers INFO user already exists user81
+06-05-2020 12:05:33,516 ans_configureUsers INFO user already exists user82
+06-05-2020 12:05:34,498 ans_configureUsers INFO --- Finish Ansible role to add and delete users on gateways ---
+06-05-2020 12:05:19,165 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+06-05-2020 12:05:20,217 ans_configureUsers INFO login OK to r80dot30gw1
+06-05-2020 12:05:24,045 ans_configureUsers INFO user deleted user12
+06-05-2020 12:05:25,382 ans_configureUsers INFO user already exists user80
+06-05-2020 12:05:27,477 ans_configureUsers INFO user already exists user81
+06-05-2020 12:05:29,572 ans_configureUsers INFO user already exists user82
+06-05-2020 12:05:32,875 ans_configureUsers INFO user added user83
+06-05-2020 12:05:35,478 ans_configureUsers INFO user set user83
+06-05-2020 12:05:35,784 ans_configureUsers INFO --- Finish Ansible role to add and delete users on gateways ---

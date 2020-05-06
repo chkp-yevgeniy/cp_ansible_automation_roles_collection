@@ -15,15 +15,14 @@
 
     
   ## Read data from configuration files
-  ## DEACTIVATED since we read data from defaults/main
-  # #
-  # - name: Include gateways from "{{ gwsListYmlFile }}"
-  #   include_vars:      
-  #     file: "{{ gwsListYmlFile }}"      
-  # #
-  # - name: Include gateways and users from "{{ mapping_GwsUsers_toAdd_toDel_File }}"
-  #   include_vars:      
-  #     file: "{{ mapping_GwsUsers_toAdd_toDel_File }}"
+  #  
+  - name: Include gateways from "{{ gwsListYmlFile }}"
+    include_vars:      
+      file: "{{ gwsListYmlFile }}"      
+  #
+  - name: Include gateways and users from "{{ mapping_GwsUsers_toAdd_toDel_File }}"
+    include_vars:      
+      file: "{{ mapping_GwsUsers_toAdd_toDel_File }}"
 
   
   - include_tasks: confGaiaUsersInner.yml 
