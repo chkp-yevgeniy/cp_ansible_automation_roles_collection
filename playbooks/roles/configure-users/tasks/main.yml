@@ -1,0 +1,28 @@
+---  
+    
+  - set_fact:
+      module_name_for_logs: ans_configureUsers  
+
+  - name: Log role start 
+    shell: date=$(date +'%d-%m-%Y %H:%m:%S,%3N'); echo "$date {{ module_name_for_logs }} INFO --- Start Ansible role to add and delete users on gateways ---" >> {{ logsFileName }}        
+
+ 
+  - name: Include gateways from "{{ gwsListYmlFile }}"
+    include_vars:      
+      file: "{{ gwsListYmlFile }}"      
+
+  - name: Include gateways and users from "{{ gen_Mapping_GwUsers_toAdd_toDel_Script }}"
+    include_vars:      
+      file: "{{ dyn_Mapping_GwsUsers_toAdd_toDel_File }}"
+     
+  
+  - include_tasks: confGaiaUsersInner.yml 
+    vars: 
+      gwArr: "{{item}}"
+    with_items:
+      - "{{ gateways }}"
+
+   
+  - name: Log role end
+    shell: date=$(date +'%d-%m-%Y %H:%m:%S,%3N'); echo "$date {{ module_name_for_logs }} INFO --- Finish Ansible role to add and delete users on gateways ---" >> {{ logsFileName }}                
+      

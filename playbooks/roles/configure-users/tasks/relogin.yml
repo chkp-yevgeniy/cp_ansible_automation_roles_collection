@@ -1,0 +1,33 @@
+---
+    # If the object was not found
+  - name: "Print _gwIP"
+    debug: msg={{ _gwIP.msg }}
+
+  - name: "Print _gwFp"
+    debug: msg={{ _gwFp.msg }}
+
+  #- meta: end_play
+
+
+  - block:
+    - name: "re-login"
+      check_point_mgmt:
+        command: login
+        parameters:
+          username: "{{mgmt_user}}"
+          password: "{{mgmt_password}}"
+          management:  "{{ _gwIP.msg }}"
+        context: "gaia_api"
+        fingerprint: "{{ _gwFp.msg }}"
+      register: login_response_temp
+
+
+  - name: "Print login response temp"
+    debug: msg={{ login_response_temp }}
+
+  - name: "Update the login_response if case of new login"
+    set_fact:
+      login_response: "{{ login_response_temp }}"
+    when:
+      - login_response_temp.skipped is undefined
+    ignore_errors: true
