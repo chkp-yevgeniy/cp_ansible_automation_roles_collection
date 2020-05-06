@@ -1,0 +1,6 @@
+[localhost]
+127.0.0.1
+
+[localhost:vars]
+gw_username=admin
+gw_pwd=Cpwins1!

@@ -40,9 +40,9 @@ Use following format for the hosts:
 
 ```bash
 [GWs]
-10.213.226.2 name="dcsyd-fw-sma-1"
-10.213.226.3 name="dcsyd-fw-sma-2"
-10.16.251.211 name="fra-cloud-vpn-r-1"
+10.12.2.1 name="gw1"
+10.12.2.2 name="gw2"
+10.12.2.3 name="gw3"
 ```
 
 Note!!! Name parameter is required for the role.

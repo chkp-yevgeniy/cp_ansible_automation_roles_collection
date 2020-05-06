@@ -1,2 +1,0 @@
-#gw_name                 ;gw_ipaddr       ;gw_mgmt        ;gw_domain     ;gw_type        ;gw_appl_type ;gw_sw_ver ;gw_sw_build ;gw_vs_cl_mem ;gw_vs_netobj ;gw_vsx ;gw_vs ;gw_hosting_vsx_gw ;gw_cl_obj      ;gw_conn_state  ;gw_tags        ;gw_activeBlades ;
-GWR8010                  ;192.168.168.101 ;mgmt           ;CMA1          ;cluster_member ;software ;R80.30 ;993000000 ;false ;false ;false ;false ; ; ;communicating ; ; ;

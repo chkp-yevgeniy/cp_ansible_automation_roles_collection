@@ -12,16 +12,13 @@ Don't hesitate to read the README.
 
 
 ## Gateways roles 
-###  Gateways reachability test 
-
-###  Deployment of techuser
+### Users configuration
 
 ### Excecution of shell commands
 
 
 ## Management (MGMT) roles
 
-### Gateways inventory generator
 
 ### Configuration of policy packages, rules and objects
 

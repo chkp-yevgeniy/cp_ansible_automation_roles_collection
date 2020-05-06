@@ -1,5 +1,0 @@
----
-#Vars file
-#List of Check Point gateways
-gateways:
-- {'gw_vs': 'false ', 'gw_sw_ver': 'R80.30 ', 'gw_mgmt': 'fra-fw-mgmt ', 'gw_conn_state': 'communicating ', 'gw_activeBlades': ' ', 'gw_vs_netobj': 'false ', 'gw_vsx': 'false ', 'gw_tags': ' ', 'gw_sw_build': '993000000 ', 'gw_ipaddr': '192.168.168.101', 'gw_cl_obj': '', 'gw_type': 'cluster_member ', 'gw_name': 'GWR8010', None: [''], 'gw_vs_cl_mem': 'false ', 'gw_domain': 'CMA1', 'gw_appl_type': 'software ', 'gw_hosting_vsx_gw': ' '}

@@ -1,7 +1,4 @@
 ---
-# - name: "logscriptAndArgsFilled from inner innser"
-#   debug: msg={{ _logscriptAndArgsFilled.msg }}
-
   - name: "Print gw ip"
     debug: msg={{ _gwIP.msg }}
 
@@ -41,9 +38,6 @@
     when:
       - user.state=="present"
 
-  # # - name: "Log add user"
-  # #   command: .{{ _logscriptAndArgsFilled.msg }} "add-user" {{ user.name }} {{ login_response }} {{ addUser_response }}
-
   - name: "Print addUser_response"
     debug: msg={{ addUser_response }}
 
@@ -51,6 +45,8 @@
     shell: echo "{{ addUser_response }}"
     register: addUserResponseStr
 
+
+  # Don't get confised. Th
   - name: Log add user OK
     shell: date=$(date +'%d-%m-%Y %H:%m:%S,%3N') ; echo "$date {{ module_name_for_logs }} INFO user added {{ user.name }}" >> {{ logsFileName }}    
     when: 

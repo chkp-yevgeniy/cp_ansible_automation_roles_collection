@@ -14,8 +14,8 @@
       check_point_mgmt:
         command: login
         parameters:
-          username: "{{mgmt_user}}"
-          password: "{{mgmt_password}}"
+          username: "{{gw_username}}"
+          password: "{{gw_pwd}}"
           management:  "{{ _gwIP.msg }}"
         context: "gaia_api"
         fingerprint: "{{ _gwFp.msg }}"

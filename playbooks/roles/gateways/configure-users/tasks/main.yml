@@ -1,0 +1,38 @@
+---  
+    
+  - set_fact:
+      module_name_for_logs: ans_configureUsers  
+      logsFileName: ../logs/ansible.logs      
+      gwsListYmlFile: ../vars/gwsList.yml
+      mapping_GwsUsers_toAdd_toDel_File: ../vars/mapping_GwsUsers_toAdd_toDel.yml
+
+
+  - name: Start
+    debug: msg="We start gataways configuration role here"
+
+  - name: Log role start 
+    shell: date=$(date +'%d-%m-%Y %H:%m:%S,%3N'); echo "$date {{ module_name_for_logs }} INFO --- Start Ansible role to add and delete users on gateways ---" >> {{ logsFileName }}        
+
+    
+  ## Read data from configuration files
+  ## DEACTIVATED since we read data from defaults/main
+  # #
+  # - name: Include gateways from "{{ gwsListYmlFile }}"
+  #   include_vars:      
+  #     file: "{{ gwsListYmlFile }}"      
+  # #
+  # - name: Include gateways and users from "{{ mapping_GwsUsers_toAdd_toDel_File }}"
+  #   include_vars:      
+  #     file: "{{ mapping_GwsUsers_toAdd_toDel_File }}"
+
+  
+  - include_tasks: confGaiaUsersInner.yml 
+    vars: 
+      gwArr: "{{item}}"
+    with_items:
+      - "{{ gateways }}"
+
+   
+  - name: Log role end
+    shell: date=$(date +'%d-%m-%Y %H:%m:%S,%3N'); echo "$date {{ module_name_for_logs }} INFO --- Finish Ansible role to add and delete users on gateways ---" >> {{ logsFileName }}                
+      
