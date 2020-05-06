@@ -6,6 +6,8 @@
   - name: Log role start 
     shell: date=$(date +'%d-%m-%Y %H:%m:%S,%3N'); echo "$date {{ module_name_for_logs }} INFO --- Start Ansible role to add and delete users on gateways ---" >> {{ logsFileName }}        
 
+
+    
  
   - name: Include gateways from "{{ gwsListYmlFile }}"
     include_vars:      

@@ -1,0 +1,187 @@
+---
+  - name: "Print gw ip"
+    debug: msg={{ _gwIP.msg }}
+
+  - name: Register gwIP
+    debug: msg={{ _gwIP.msg }}
+    register: __gwIP
+
+  - name: "Print __gwIP"
+    debug: msg={{ __gwIP.msg }}
+
+  - name: "Print gw fp"
+    debug: msg={{ _gwFp.msg }}
+
+  - name: "Register gw fp"
+    debug: msg={{ _gwFp.msg }}
+    register: __gwFp
+
+  - name: "Print user name"
+    debug: msg={{ user.name }}  
+
+  - name: "Print user state"
+    debug: msg={{ user.state }}  
+  
+
+  # Add user
+  - name: "Add user"
+    check_point_mgmt:
+      command: add-user
+      parameters:
+        uid: "{{ user.uid }}"        
+        name: "{{ user.name }}"
+        homedir: "{{ user.homedir }}"
+      context: "gaia_api"
+      session-data: "{{ login_response }}"
+    register: addUser_response
+    ignore_errors: true    
+    when:
+      - user.state=="present"
+
+  - name: "Print addUser_response"
+    debug: msg={{ addUser_response }}
+
+  - name: Put list into string   
+    shell: echo "{{ addUser_response }}"
+    register: addUserResponseStr
+
+
+  # Don't get confised. Th
+  - name: Log add user OK
+    shell: date=$(date +'%d-%m-%Y %H:%m:%S,%3N') ; echo "$date {{ module_name_for_logs }} INFO user added {{ user.name }}" >> {{ logsFileName }}    
+    when: 
+    - addUser_response.failed is defined
+    - addUser_response.failed==false
+
+  - name: Log add user Failed
+    shell: date=$(date +'%d-%m-%Y %H:%m:%S,%3N') ; echo "$date {{ module_name_for_logs }} ERROR user configuration failed {{ user.name }}" >> {{ logsFileName }}    
+    when: 
+    - addUser_response.failed is defined
+    - addUser_response.failed==true
+    - addUserResponseStr is defined
+    - addUserResponseStr.stdout.find("User already exists") == -1
+
+  - name: Log add user Exist
+    shell: date=$(date +'%d-%m-%Y %H:%m:%S,%3N') ; echo "$date {{ module_name_for_logs }} INFO user already exists {{ user.name }}" >> {{ logsFileName }}    
+    when:     
+    - addUserResponseStr is defined
+    - addUserResponseStr.stdout.find("User already exists") != -1
+    - addUser_response.failed is defined
+    - addUser_response.failed==true
+    
+
+  # Check if session was broken and if we need to re-login  
+  - name: "Print addUser_response.failed"
+    debug: msg={{ addUser_response.failed }}
+    when:
+      - addUser_response.failed is defined
+
+
+   # # Include relogin procedure
+   # We do it in case object doesn't exit
+   #- name: "Include relogin tasks"
+  - include_tasks: relogin.yml 
+    vars: 
+      _gwIP: "{{__gwIP}}"
+      _gwFp: "{{__gwFp}}"
+    when:      
+      - addUser_response.failed is defined
+      - addUser_response.failed==true
+
+
+  # Set user
+  - name: "Set user"
+    check_point_mgmt:
+      command: set-user
+      parameters:
+        name: "{{ user.name }}"        
+        roles: "{{ user.role }}"
+        password: "{{ user.pwd }}"
+      context: "gaia_api"
+      session-data: "{{ login_response }}"
+    register: setUser_response
+    ignore_errors: true
+    when:      
+      - user.state=="present"
+      - addUser_response.failed is defined
+      - addUser_response.failed==false
+
+  - name: Log set user OK
+    shell: date=$(date +'%d-%m-%Y %H:%m:%S,%3N') ; echo "$date {{ module_name_for_logs }} INFO user set {{ user.name }}" >> {{ logsFileName }}    
+    when: 
+    - addUser_response.failed is defined
+    - addUser_response.failed==false
+
+  # Del user
+  - name: "Del user"
+    check_point_mgmt:
+      command: delete-user
+      parameters:        
+        name: "{{ user.name }}"        
+      context: "gaia_api"
+      session-data: "{{ login_response }}"
+    register: delUser_response
+    ignore_errors: true    
+    when:
+      - user.state=="absent"   
+
+  - name: Print del user log    
+    shell: date=$(date +'%d-%m-%Y %H:%m:%S,%3N') ; echo "$date {{ module_name_for_logs }} INFO user deleted {{ user.name }}" >> {{ logsFileName }}    
+    when: 
+    - delUser_response.failed is defined
+    - delUser_response.failed==false
+
+
+  # # Include relogin procedure
+  # We do it in case object doesn't exit
+  #- name: "Include relogin tasks"
+  - include_tasks: relogin.yml 
+    vars: 
+      _gwIP: "{{__gwIP}}"
+      _gwFp: "{{__gwFp}}"
+    when:      
+      - delUser_response.failed is defined
+      - delUser_response.failed==true
+
+
+
+  # MOVED TO A SEPARATE PLAYBOOK
+  # ### Process on user public key deployment
+  # ## Get md5 of local and remote key
+  # #
+  # - name: Get the md5 of local key
+  #   shell: md5sum {{ local_key_path }}{{ user.publicKeyFileName }} | awk '{ print $1 }' 
+  #   register: localKeyMd5
+  # #
+  # - name: Get the md5 of remote key
+  #   shell: md5sum {{ remote_key_path }}{{ user.name }}/{{ remote_key_fileName }} | awk '{ print $1 }' 
+  #   register: remoteKeyMd5
+  #   delegate_to: "{{ __gwIP.msg }}"
+
+
+  # # Copy user public key
+  # - name: "Deploy public keys"
+  #   block: 
+  #     - name: "Just print hostname"  
+  #       shell: hostname        
+  #     #- name: Create folder /etc/ssh/auth/<userName>
+  #     - name: Create folder /home/automation/<userName>
+  #       file:          
+  #         path: "{{ remote_key_path }}{{ user.name }}"
+  #         state: directory
+  #         # owner: admin
+  #         # group: root
+  #         owner: techuser
+  #         group: users
+  #         mode: 0755
+  #     - name: Copy key file into the folder
+  #       copy:
+  #         src: "{{ local_key_path }}{{ user.publicKeyFileName }}"
+  #         dest: "{{ remote_key_path }}{{ user.name }}/{{ remote_key_fileName }}"
+  #         mode: 0644    
+  #   delegate_to: "{{ __gwIP.msg }}"
+  #   when:
+  #     - user.state=="present" 
+  #     - localKeyMd5.stdout!=remoteKeyMd5.stdout
+
+

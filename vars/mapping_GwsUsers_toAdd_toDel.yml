@@ -1,0 +1,21 @@
+
+r80dot30gw1:
+- {'name': 'user11', 'pwd': 'qwe123', 'publicKeyFileName': 'user11Key', 'state': 'absent', 'role': 'adminRole', 'uid': '0', 'homedir': '/home/user11'}
+- {'name': 'user12', 'pwd': 'qwe123', 'publicKeyFileName': 'user12Key', 'state': 'present', 'role': 'adminRole', 'uid': '0', 'homedir': '/home/user12'}
+- {'name': 'user80', 'pwd': 'qwe123', 'publicKeyFileName': 'user80Key', 'state': 'present', 'role': 'monitorRole', 'uid': '0', 'homedir': '/home/user80'}
+- {'name': 'user81', 'pwd': 'qwe123', 'publicKeyFileName': 'user81Key', 'state': 'present', 'role': 'monitorRole', 'uid': '0', 'homedir': '/home/user81'}
+- {'name': 'user82', 'pwd': 'qwe123', 'publicKeyFileName': 'user81Key', 'state': 'present', 'role': 'monitorRole', 'uid': '0', 'homedir': '/home/user82'}
+
+
+
+R8030_GW1:
+- {'name': 'user81', 'pwd': 'qwe123', 'publicKeyFileName': 'user81Key', 'state': 'present', 'role': 'monitorRole', 'uid': '0', 'homedir': '/home/user81'}
+- {'name': 'user11', 'pwd': 'qwe123', 'publicKeyFileName': 'user11Key', 'state': 'present', 'role': 'adminRole', 'uid': '0', 'homedir': '/home/user11'}
+- {'name': 'user80', 'pwd': 'qwe123', 'publicKeyFileName': 'user80Key', 'state': 'present', 'role': 'monitorRole', 'uid': '0', 'homedir': '/home/user80'}
+- {'name': 'user12', 'pwd': 'qwe123', 'publicKeyFileName': 'user12Key', 'state': 'present', 'role': 'adminRole', 'uid': '0', 'homedir': '/home/user12'}
+
+R8030_GW2:
+- {'name': 'user11', 'pwd': 'qwe123', 'publicKeyFileName': 'user11Key', 'state': 'present', 'role': 'adminRole', 'uid': '0', 'homedir': '/home/user11'}
+- {'name': 'user70', 'pwd': 'qwe123', 'publicKeyFileName': 'user70Key', 'state': 'present', 'role': 'monitorRole', 'uid': '0', 'homedir': '/home/user70'}
+- {'name': 'user12', 'pwd': 'qwe123', 'publicKeyFileName': 'user12Key', 'state': 'present', 'role': 'adminRole', 'uid': '0', 'homedir': '/home/user12'}
+- {'name': 'user71', 'pwd': 'qwe123', 'publicKeyFileName': 'user71Key', 'state': 'present', 'role': 'monitorRole', 'uid': '0', 'homedir': '/home/user71'}

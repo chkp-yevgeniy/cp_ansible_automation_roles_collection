@@ -1,0 +1,62 @@
+---
+  - name: Gateway name
+    debug: msg={{ gwArr.gw_name }}
+
+  - name: Register gwIP
+    debug: msg={{ gwArr.gw_ipaddr }}
+    register: gwIP
+
+  - name: Print GW IP
+    debug: msg={{ gwIP }}
+
+  - name: Register gwFingerprint
+    debug: msg={{ gwArr.fingerprint }}
+    register: gwFp
+
+  - name: Print GW fingerprint
+    debug: msg={{ gwFp.msg }}
+
+ 
+  - name: "Login to gateway"
+    check_point_mgmt:
+      command: login
+      parameters:        
+        username: "{{ gw_username }}"
+        password: "{{ gw_pwd }}"
+        management:  "{{ gwArr.gw_ipaddr }}"        
+      context: "gaia_api"
+      fingerprint: "{{ gwArr.fingerprint }}"
+    register: login_response
+    ignore_errors: true
+
+  - name: "Print login response"
+    debug: msg={{ login_response }}
+
+
+  - name: Print login log    
+    shell: date=$(date +'%d-%m-%Y %H:%m:%S,%3N') ; echo "$date {{ module_name_for_logs }} INFO login OK to {{ gwArr.gw_name }}" >> {{ logsFileName }}    
+    when: 
+    - login_response.failed is defined
+    - login_response.failed==false
+
+  - name: Print login log
+    shell: date=$(date +'%d-%m-%Y %H:%m:%S,%3N') ; echo "$date {{ module_name_for_logs }} ERROR login failed to {{ gwArr.gw_name }}" >> {{ logsFileName }}
+    when: 
+    - login_response.failed is defined
+    - login_response.failed==true
+
+  
+  #- meta: end_play
+
+  
+  - include_tasks: confGaiaUsersInner_inner.yml    
+    vars:
+      user: "{{user_item}}"       
+      _gwIP: "{{gwIP}}" 
+      _gwFp: "{{gwFp}}"        
+    when: vars[gwArr.gw_name] is defined    
+    with_items:   
+      - "{{ vars[gwArr.gw_name] }}"    
+    loop_control:
+      loop_var: user_item   
+
