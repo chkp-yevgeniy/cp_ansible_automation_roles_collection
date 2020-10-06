@@ -4,7 +4,7 @@
   cp_mgmt_network:
     state: "{{item.state}}"
     color: "{{item.color}}"
-    groups: "{{item.groups}}"
+    # groups: "{{item.groups}}" use member in the group module instead
     name: "{{item.name}}"
     subnet: "{{ item.subnet | ipaddr('network') }}"
     subnet_mask: "{{ item.subnet | ipaddr('netmask') }}"
