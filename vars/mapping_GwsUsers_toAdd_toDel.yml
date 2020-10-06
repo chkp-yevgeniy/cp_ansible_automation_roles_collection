@@ -7,7 +7,6 @@ r80dot30gw1:
 - {'name': 'user82', 'pwd': 'qwe123', 'publicKeyFileName': 'user81Key', 'state': 'present', 'role': 'monitorRole', 'uid': '0', 'homedir': '/home/user82'}
 
 
-
 R8030_GW1:
 - {'name': 'user81', 'pwd': 'qwe123', 'publicKeyFileName': 'user81Key', 'state': 'present', 'role': 'monitorRole', 'uid': '0', 'homedir': '/home/user81'}
 - {'name': 'user11', 'pwd': 'qwe123', 'publicKeyFileName': 'user11Key', 'state': 'present', 'role': 'adminRole', 'uid': '0', 'homedir': '/home/user11'}

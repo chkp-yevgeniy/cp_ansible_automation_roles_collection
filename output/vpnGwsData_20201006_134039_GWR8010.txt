@@ -1,0 +1,156 @@
+******************  GWR8010  *************************
+---------------CPU utilization: mpstat----------------
+Linux 3.10.0-693cpx86_64 (r80dot30gw1) 	10/06/20 	_x86_64_	(4 CPU)
+
+13:40:41     CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
+13:40:41     all    0.97    0.01    0.45    0.03    0.00    0.01    0.11    0.00    0.00   98.43
+---------------Memory utilization: free -m----------------
+              total        used        free      shared  buff/cache   available
+Mem:          16081        2693       11610           5        1776       12797
+Swap:          8189           0        8189
+---------------Intefaces stats, netstat -i----------------
+Kernel Interface table
+Iface       MTU Met    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+eth0       1460   0   175444      0      0      0    94652      0      0      0 BMRU
+eth0:1     1460   0      - no statistics available -                            BMRU
+eth1       1460   0        0      0      0      0        0      0      0      0 BMRU
+lo        65536   0    76949      0      0      0    76949      0      0      0 LMdPRU
+---------------Disc space check: df -h ----------------
+Filesystem                       Size  Used Avail Use% Mounted on
+/dev/mapper/vg_splat-lv_current   20G  5.3G   15G  27% /
+/dev/sda1                        291M   26M  251M  10% /boot
+tmpfs                            7.9G  4.5M  7.9G   1% /dev/shm
+/dev/mapper/vg_splat-lv_log       43G  418M   43G   1% /var/log
+---------------cpinfo -y all----------------
+[CPFC]
+	No hotfixes..
+
+[MGMT]
+	No hotfixes..
+
+[IDA]
+	No hotfixes..
+
+[FW1]
+	No hotfixes..
+
+FW1 build number:
+This is Check Point's software version R80.30 - Build 116
+
+[SecurePlatform]
+	No hotfixes..
+
+[CPinfo]
+	No hotfixes..
+
+[PPACK]
+	No hotfixes..
+
+[DIAG]
+	No hotfixes..
+
+[CVPN]
+	No hotfixes..
+---------------CoreXL, cpmq get----------------
+Note: 'cpmq' is deprecated and no longer supported. For multiqueue management, please use 'mq_mng'
+Current multiqueue status:
+---------------vpn tu mstats----------------
+
+   Instance#     # of inSPIs    # of outSPIs
+           0               0               0 
+   -----------------------------------------
+   Summary:                0               0
+---------------fw ctl pstat----------------
+
+---------------cpstat vpn -f all----------------
+
+Encrypted packets:                            0
+Decrypted packets:                            0
+Encryption errors:                            0
+Decryption errors:                            0
+Connection related errors:                    0
+Product:                                      IPSec VPN
+Major version:                                6
+Minor version:                                0
+Kernel build num.:                            993000009
+IKE current SAs:                              0
+IKE current SAs initiated by me:              0
+IKE current SAs initiated by peer:            0
+IKE max concurrent SAs:                       0
+IKE max concurrent SAs initiated by me:       0
+IKE max concurrent SAs initiated by peer:     0
+IKE total SAs:                                0
+IKE total SAs initiated by me:                0
+IKE total SAs initiated by peer:              0
+IKE total SA attempts:                        0
+IKE total SA attempts initiated by me:        0
+IKE total SA attempts initiated by peer:      0
+IKE current ongoing SA negotiations:          0
+IKE max concurrent SA negotiations:           0
+IKE no response from peer (initiator errors): 0
+IKE total failures (initiator errors):        0
+IKE total failures (responder errors):        0
+IKE total failures (initiator + responder):   0
+IPsec current Inbound SAs:                    0
+IPsec current Outbound SAs:                   0
+IPsec max concurrent Inbound SAs:             0
+IPsec max concurrent Outbound SAs:            0
+IPsec total Inbound SAs:                      0
+IPsec total Outbound SAs:                     0
+IPsec number of VPN-1 peers:                  0
+IPsec maximum number of VPN-1 peers:          0
+IPsec number of VPN-1 RA peers:               0
+IPsec maximum number of VPN-1 RA peers:       0
+IPsec decryption errors:                      0
+IPsec authentication errors:                  0
+IPsec replay errors:                          0
+IPsec Connection related errors:              0
+IPsec unknown SPI errors:                     0
+IPsec other inbound errors:                   0
+IPsec other outbound errors:                  0
+IPsec UDP encrypted packets:                  0
+IPsec UDP decrypted packets:                  0
+IPsec encrypted bytes:                        0
+IPsec decrypted bytes:                        0
+IPsec encrypted packets:                      0
+IPsec decrypted packets:                      0
+IPsec bytes before decompression:             0
+IPsec bytes after decompression:              0
+IPsec bytes decompression overhead:           0
+IPsec packets decompressed:                   0
+IPsec decompression errors:                   0
+IPsec bytes before compression:               0
+IPsec bytes after compression:                0
+IPsec bytes compression overhead:             0
+IPsec bytes non compressible:                 0
+IPsec packets compressed:                     0
+IPsec packets non compressible:               0
+IPsec compression errors:                     0
+HW accel. vendor:                             None
+HW accel. status:                             Off
+HW accel. driver major version:               0
+HW accel. driver minor version:               0
+HW accel. encrypted IPsec packets:            0
+HW accel. decrypted IPsec packets:            0
+HW accel. encrypted IPsec bytes:              0
+HW accel. decrypted IPsec bytes:              0
+HW accel. encryption errors:                  0
+HW accel. decrytpion errors:                  0
+HW accel. context errors:                     0
+IPsec NIC: Number of IPsec NIC's   :          0
+IPsec NIC: Current SA's :                     0
+IPsec NIC: Total SA's   :                     0
+IPsec NIC: Decrypted bytes by NIC  :          0
+IPsec NIC: Encrypted bytes by NIC  :          0
+IPsec NIC: Decrypted packets by NIC:          0
+IPsec NIC: Encrypted packets by NIC:          0
+---------------fwaccel stats----------------
+
+---------------arp cache size----------------
+4096
+---------------ClusterXL cphaprob stat----------------
+
+---------------ClusterXL cphaprob -a if----------------
+
+---------------/conf/trac_client_1.ttm----------------
+---------------/conf/local.scv----------------

@@ -7,7 +7,8 @@
 
 # Network groups
 MGMT-cp_mgmt_group_tasks:
-- { state: present, name: TestGroupAutomation, comments: "Test group created from Ansible via WEB API"}
+- { state: present, name: TestGroupAutomation, comments: "Test group created from Ansible via WEB API", members: ["net_10.123.123.0_m24", "net_10.123.124.0_m24", "10.123.125.0/24"]}
+#- { state: present, name: TestGroupAutomation, comments: "Test group created from Ansible via WEB API", members: ["net_10.123.123.0_m24"]}
 #- { state: present, name: 'ACME_ext_nets'}
 # - { state: present, name: 'ACME_Security_Gateways'}
 
@@ -15,7 +16,8 @@ MGMT-cp_mgmt_group_tasks:
 MGMT-cp_mgmt_network_tasks:
 - { state: present, name: 'net_10.123.123.0_m24', subnet: 10.123.123.0/24, groups: ["TestGroupAutomation"], color: blue, comments: "Test network created from Ansible via WEB API"}
 - { state: present, name: 'net_10.123.124.0_m24', subnet: 10.123.124.0/24, groups: ["TestGroupAutomation"], color: blue, comments: "Test network created from Ansible via WEB API"}
-- { state: present, name: 'net_10.123.125.0_m24', subnet: 10.123.125.0/24, groups: ["TestGroupAutomation"], color: blue, comments: "Test network created from Ansible via WEB API"}
+#- { state: present, name: 'net_10.123.125.0_m24', subnet: 10.123.125.0/24, groups: ["TestGroupAutomation"], color: blue, comments: "Test network created from Ansible via WEB API"}
+- { state: present, name: 'net_10.123.125.0_m24', subnet: 10.123.125.0/24, groups: [{"remove": "TestGroupAutomation"}], color: blue, comments: "Test network created from Ansible via WEB API"}
 #- { state: present, name: 'net_10.123.123.0_m24', subnet: 10.123.123.0/24, groups: ["TestGroupAutomation"], color: blue}
 #- { state: present, name: 'net_10.123.124.0_m24', subnet: 10.123.124.0/24, groups: ["TestGroupAutomation"], color: blue}
 #- { state: present, name: 'External', subnet: 10.2.0.0/24, groups: ["ACME_ext_nets"], color: blue}

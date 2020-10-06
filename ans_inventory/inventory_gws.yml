@@ -1,14 +1,16 @@
 [GWs]
 # R80.30
-192.168.168.101 name="GWR8010" vs_name="" ip="192.168.168.101" domain="CMA1"
+10.142.0.30 name="GWR8010" vs_name="" ip="10.142.0.20" domain=""
 # 192.168.168.101 name="GWR8010" vs_name="" ip="192.168.168.101" domain="CMA1" ansible_python_interpreter=/opt/CPsuite-R80.30/fw1/Python/bin/python
 
 
 [GWs:vars]
 ansible_connection=ssh
-ansible_user=robot
+ansible_user=ubuntu
+ansible_ssh_pass=vpn123
 #ansible_python_interpreter=/opt/CPsuite-R80.30/fw1/Python/bin/python
-ansible_python_interpreter=/opt/CPsuite-R80/fw1/Python/bin/python
+#ansible_python_interpreter=/opt/CPsuite-R80/fw1/Python/bin/python
+ansible_python_interpreter=/bin/python
 
 #For keys copy
 local_key_path=/home/automation/.ssh/
