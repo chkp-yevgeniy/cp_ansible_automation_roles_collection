@@ -1,0 +1,11 @@
+---
+  - name:  Add domains to mds server  
+    hosts: MGMT
+    connection: httpapi
+    gather_facts: no
+  
+    roles:      
+      - roles/mgmt/configure_mds_rules_objects
+
+
+

@@ -95,3 +95,27 @@
 06-05-2020 14:05:58,158 ans_configureUsers INFO user already exists user82
 06-05-2020 14:05:00,288 ans_configureUsers INFO user already exists user83
 06-05-2020 14:05:01,298 ans_configureUsers INFO --- Finish Ansible role to add and delete users on gateways ---
+12-10-2020 21:10:21,088 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+12-10-2020 21:10:22,349 ans_configureUsers INFO login OK to r80dot30gw1
+12-10-2020 21:10:24,647 ans_configureUsers INFO user added user11
+12-10-2020 21:10:26,733 ans_configureUsers INFO user set user11
+12-10-2020 21:10:29,046 ans_configureUsers INFO user added user12
+12-10-2020 21:10:31,274 ans_configureUsers INFO user set user12
+12-10-2020 21:10:33,758 ans_configureUsers INFO user added user80
+12-10-2020 21:10:36,118 ans_configureUsers INFO user set user80
+12-10-2020 21:10:38,751 ans_configureUsers INFO user added user81
+12-10-2020 21:10:41,383 ans_configureUsers INFO user set user81
+12-10-2020 21:10:44,189 ans_configureUsers INFO user added user82
+12-10-2020 21:10:46,948 ans_configureUsers INFO user set user82
+12-10-2020 21:10:49,873 ans_configureUsers INFO user added user83
+12-10-2020 21:10:52,705 ans_configureUsers INFO user set user83
+12-10-2020 21:10:53,017 ans_configureUsers INFO --- Finish Ansible role to add and delete users on gateways ---
+12-10-2020 21:10:22,585 ans_configureUsers INFO --- Start Ansible role to add and delete users on gateways ---
+12-10-2020 21:10:23,616 ans_configureUsers INFO login OK to r80dot30gw1
+12-10-2020 21:10:25,264 ans_configureUsers INFO user already exists user11
+12-10-2020 21:10:27,416 ans_configureUsers INFO user already exists user12
+12-10-2020 21:10:29,617 ans_configureUsers INFO user already exists user80
+12-10-2020 21:10:31,817 ans_configureUsers INFO user already exists user81
+12-10-2020 21:10:33,991 ans_configureUsers INFO user already exists user82
+12-10-2020 21:10:36,190 ans_configureUsers INFO user already exists user83
+12-10-2020 21:10:37,277 ans_configureUsers INFO --- Finish Ansible role to add and delete users on gateways ---

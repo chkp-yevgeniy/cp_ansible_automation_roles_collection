@@ -1,8 +1,0 @@
----
-
-gateways:
-- {'gw_vs': 'false', 'gw_sw_ver': 'R80.30', 'gw_mgmt': 'MDM_R8040', 'gw_conn_state': 'communicating', 'gw_activeBlades': '', 'fingerprint': 'C7FBCCD7BAF48D97CD88C45002B462860F50CA54', 'gw_vs_netobj': 'false', 'gw_vsx': 'false', 'gw_tags': 'sales', 'gw_sw_build': '', 'gw_ipaddr': '10.142.0.30', 'gw_cl_obj': '', 'gw_type': 'gateway', 'gw_name': 'r80dot30gw1', 'gw_vs_cl_mem': 'false', 'gw_domain': '', 'gw_appl_type': 'software', 'gw_hosting_vsx_gw': ''}
-#- {'gw_vs': 'false', 'gw_sw_ver': 'R80.30', 'gw_mgmt': 'MDM_R8040', 'gw_conn_state': 'communicating', 'gw_activeBlades': '', 'fingerprint': '18C9EDAF8887933CA129F486945D1DF377E5C4D0', 'gw_vs_netobj': 'false', 'gw_vsx': 'false', 'gw_tags': 'sales', 'gw_sw_build': '', 'gw_ipaddr': '10.142.0.30', 'gw_cl_obj': '', 'gw_type': 'gateway', 'gw_name': 'r80dot30gw1', 'gw_vs_cl_mem': 'false', 'gw_domain': '', 'gw_appl_type': 'software', 'gw_hosting_vsx_gw': ''}
-#- {'gw_vs': 'false', 'gw_sw_ver': 'R80.30', 'gw_mgmt': 'MDM_R8030', 'gw_conn_state': 'communicating', 'gw_activeBlades': '', 'fingerprint': '31:E8:09:D3:F6:10:8F:6C:C2:2B:5F:37:77:B7:05:B1:F5:B2:EF:0C', 'gw_vs_netobj': 'false', 'gw_vsx': 'false', 'gw_tags': 'finances', 'gw_sw_build': '991130000', 'gw_ipaddr': '192.168.168.132', 'gw_cl_obj': 'Cluster1_R8010', 'gw_type': 'cluster_member', 'gw_name': 'R8030_GW2', 'gw_vs_cl_mem': 'false', 'gw_domain': 'CMA2_Server', 'gw_appl_type': 'software', 'gw_hosting_vsx_gw': ''}
-
-
