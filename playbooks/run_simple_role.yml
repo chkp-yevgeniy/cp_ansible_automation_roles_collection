@@ -5,7 +5,6 @@
     gather_facts: no
   
     roles:      
-      - roles/mgmt/configure_mds_rules_objects
-
+      - roles/mgmt/simple_role
 
 
