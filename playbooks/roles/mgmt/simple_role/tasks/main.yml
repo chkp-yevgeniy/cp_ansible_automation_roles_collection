@@ -1,34 +1,35 @@
 ---  
-
 - name: Simple role start
   debug: msg="We start a simple role here"
 
 
-- name: Hosts to be configured 
-  debug: msg="{{ vars['MGMT-cp_mgmt_host_tasks'] }}"
-
-- name: Loop through hosts
-  debug: msg="{{ item.name }} {{ item.ip }}"
-  loop: "{{ vars['MGMT-cp_mgmt_host_tasks'] }}"
+# MGMT-cp_mgmt_host_tasks is the list of dictionaries containing hosts from defaults/main.yml
+# - name: Hosts to be configured 
+#   debug: msg="{{ vars['MGMT-cp_mgmt_host_tasks'] }}"
 
 
-- name: Configure hosts in a loop
-  cp_mgmt_host:
-    state: "{{item.state}}"
-    color: "{{item.color}}"
-    name: "{{item.name}}"
-    ip_address: "{{item.ip}}"
-    nat_settings:
-      auto_rule: "{{item.nat_auto_rule}}"
-      install_on: "{{item.nat_install_on}}"
-      ipv4_address: "{{item.nat_ipv4}}"
-      method: "{{item.nat_method}}"
-    auto_publish_session: true          
-  loop: "{{ vars['MGMT-cp_mgmt_host_tasks'] }}"
-  ignore_errors: yes  
+# - name: Loop through hosts
+#   debug: msg="{{ item.name }} {{ item.ip }}"
+#   loop: "{{ vars['MGMT-cp_mgmt_host_tasks'] }}"
 
 
-- name: Configure hosts in a loop in an included playbook
-  include_tasks: cp_mgmt_host.yml
-  loop: "{{ vars['MGMT-cp_mgmt_host_tasks'] }}"
-  ignore_errors: yes  
+# - name: Configure hosts in a loop
+#   cp_mgmt_host:
+#     state: "{{item.state}}"
+#     color: "{{item.color}}"
+#     name: "{{item.name}}"
+#     ip_address: "{{item.ip}}"
+#     nat_settings:
+#       auto_rule: "{{item.nat_auto_rule}}"
+#       install_on: "{{item.nat_install_on}}"
+#       ipv4_address: "{{item.nat_ipv4}}"
+#       method: "{{item.nat_method}}"
+#     auto_publish_session: true          
+#   loop: "{{ vars['MGMT-cp_mgmt_host_tasks'] }}"
+#   ignore_errors: yes  
+
+
+# - name: Configure hosts in a loop in an included playbook
+#   include_tasks: cp_mgmt_host.yml
+#   loop: "{{ vars['MGMT-cp_mgmt_host_tasks'] }}"
+#   ignore_errors: yes  
