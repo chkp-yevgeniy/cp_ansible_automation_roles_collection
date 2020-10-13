@@ -20,3 +20,8 @@ MGMT-cp_mgmt_host_tasks:
     comments: "Test host created from Ansible via WEB API"
   } 
 
+# # Networks
+# MGMT-cp_mgmt_network_tasks:
+# - { state: present, name: 'net_10.123.123.0_m24', subnet: 10.123.123.0/24, color: blue, comments: "Test network created from Ansible via WEB API"}
+# - { state: present, name: 'net_10.123.124.0_m24', subnet: 10.123.124.0/24, color: blue, comments: "Test network created from Ansible via WEB API"}
+# - { state: present, name: 'net_10.123.125.0_m24', subnet: 10.123.125.0/24, color: blue, comments: "Test network created from Ansible via WEB API"}
