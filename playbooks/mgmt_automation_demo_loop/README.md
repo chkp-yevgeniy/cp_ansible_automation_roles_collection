@@ -28,12 +28,12 @@ To get started with the automation you might want to test a very simple playbook
 
 3.1 Adjust inventory to your needs
 ```bash
- verySimpleDemoInventory.yml
+ inventory.yml
 ```
 
 3.2 Start playbook with: 
 ```bash
- ansible-playbook -i demo_inventory.yml mgmt_automation_simple_demo.yml -v
+ ansible-playbook -i inventory.yml main.yml -vv
 ```
 
 !!! Note: 

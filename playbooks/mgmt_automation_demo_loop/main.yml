@@ -7,7 +7,7 @@
   tasks:
     - name: Import configuration data into my_data dict
       include_vars:
-        file: vars/main.yml
+        file: vars/conf_data.yml
         name: my_data
 
 
