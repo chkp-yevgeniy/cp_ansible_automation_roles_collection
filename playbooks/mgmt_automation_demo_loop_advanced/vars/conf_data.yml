@@ -52,7 +52,7 @@ MGMT_cp_mgmt_service_udp:
 # Policy packages
 MGMT_cp_mgmt_package_tasks:
 - { state: present, 
-    name: Automation_Test_Policy, 
+    name: Automation_Test_Policy_2, 
     comments: "Demo policy created from Ansible via WEB API", 
     color: forest green, 
     threat_prevention: true, 
@@ -61,32 +61,28 @@ MGMT_cp_mgmt_package_tasks:
 
 # # Rules
 MGMT_cp_mgmt_access_rule_tasks:
-- { state: present, layer: Automation_Test_Policy Network, name: First rule, 
-    position: 1, source: ["test_host_automation", "test_host_automation2"], destination: any, service: ["ssh", "https"], action: accept, track_type: log 
-    #position: 1, source: ["test_host_automation"], destination: any, service: ["ssh", "https"], action: accept, track_type: log 
-  }
-- { state: present,  layer: Automation_Test_Policy Network, name: Second rule, 
-    position: 2, source: TestGroupAutomation, destination: any, service: ["udp_10123"], action: accept, track_type: log 
-  }
-- { state: present, layer: Automation_Test_Policy Network, name: Third rule,     
-    position: 3, source: any, destination: ["net_10.123.123.0_m24", "net_10.123.124.0_m24"], service: ["udp_10124"], action: accept, track_type: log 
-    #position: 3, source: any, destination: any, service: ["udp_10124"], action: accept, track_type: log 
-  }
-# - { state: present, layer: Automation_Test_Policy Network, name: ACMECorp WebServer to DB, 
+- { state: present, layer: Automation_Test_Policy_2 Network, name: First rule, position: 1, source: ["test_host_automation", "test_host_automation2"], destination: any, service: ["ssh", "https"], action: accept, track_type: log }
+- { state: present,  layer: Automation_Test_Policy_2 Network, name: Second rule, position: 2, source: ["test_host_automation"], destination: any, service: ["udp_10123"], action: accept, track_type: log }
+- { state: present, layer: Automation_Test_Policy_2 Network, name: Third rule, position: 3, source: any, destination: ["net_10.123.123.0_m24", "net_10.123.124.0_m24"], service: ["udp_10124"], action: accept, track_type: log }  
+- { state: present, layer: Automation_Test_Policy_2 Network, name: Fourth rule, position: 5, source: ["net_10.123.123.0_m24"], destination: ["any"], service: ["any"], action: drop, track_type: log }
+- { state: present, layer: Automation_Test_Policy_2 Network, name: Rule 5, position: 4, source: any, destination: ["any"], service: ["any"], action: drop, track_type: log }
+
+# - { state: present, layer: Automation_Test_Policy_2 Network, name: ACMECorp WebServer to DB, 
 #     position: 4, source: WebServers, destination: DBServers, service: ["MySQL"], action: accept, track_type: log 
 #   }
-# - { state: present, layer: Automation_Test_Policy Network, name: ACMECorp WebServer Outbound Access, 
+# - { state: present, layer: Automation_Test_Policy_2 Network, name: ACMECorp WebServer Outbound Access, 
 #     position: 5, source: WebServers, destination: any, service: ["http", "https", "ntp", "dns"], action: accept, track_type: log 
 #   }
-# - { state: present, layer: Automation_Test_Policy Network,  name: Allow ICMP and HTTPS,
+# - { state: present, layer: Automation_Test_Policy_2 Network,  name: Allow ICMP and HTTPS,
 #     position: 6, source: any, destination: any, service: ["icmp-requests", "https"], action: accept, track_type: log 
 #   }
-# - { state: present, layer: Automation_Test_Policy Network,  name: LoadBalancers,
+# - { state: present, layer: Automation_Test_Policy_2 Network,  name: LoadBalancers,
 #     position: 7,  source: any, destination: ["LoadBalancer1", "LoadBalancer2", "hst-dmz-webserver"], service: ["http", "https"], action: accept, track_type: log 
 #   }
   # Enable log on the existing cleanup rule
-- { state: present, layer: Automation_Test_Policy Network, name: Cleanup rule, 
-    position: 4, position_bottom: "default drop", source: any, destination: ["any"], service: ["any"], action: drop, track_type: log }
+# - { state: present, layer: Automation_Test_Policy_2 Network, name: Cleanup rule, 
+#     position: 4, position_bottom: "default drop", source: any, destination: ["any"], service: ["any"], action: drop, track_type: log }
+
 
 # # Gateways
 # MGMT_cp_mgmt_simple_gateway_tasks:
